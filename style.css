@@ -1,0 +1,1749 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+  }
+  html{
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    --default-color: #007bff; /* Set the default color value */ 
+    /*#FFFF00*/
+  }
+  /* 
+  In your style.css file, locate the CSS classes that use the default color (#ff004f) and replace them with the CSS variable:
+Replace instances of #ff004f with var(--default-color).
+  */
+
+  body {
+    overflow-x: hidden;
+    background: black; /* Set the background color to the default red color */
+    color: #fff;
+    /*background: var(--default-color);*/
+    / 
+  }
+  
+
+  
+
+  .hidden-left,
+  .hidden-right,
+  .hidden-ascend {
+    opacity: 0;
+    filter: blur(5px);
+    transition: all 1s;
+  }
+  
+  .hidden-left {
+    transform: translateX(-100%);
+  }
+  
+  .hidden-right {
+    transform: translateX(100%);
+  }
+  
+  .hidden-ascend{
+    transform: translateY(100%);
+  }
+  
+  
+  
+  @media (prefers-reduced-motion) {
+    .hidden-left,
+    .hidden-right,
+    .hidden-ascend{
+      transition: none;
+    }
+  }
+  
+
+  .show {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateX(0);
+  }
+  
+  
+  #header {
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/home_background.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .container {
+    padding: 10px 10%;
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+
+/* Apply hue-rotate effect to both the logo and the modal image */
+  .logo{
+    width: 150px;
+    /* Original color of the image */
+    filter: hue-rotate(0deg);
+    transition: filter 4s;
+  }
+
+  #zoomedLogo{
+    filter: hue-rotate(0deg);
+    transition: filter 4s;
+  } 
+  
+  /* Change the color on hover for both the logo and the modal image */
+.logo:hover{
+    animation: shine 1s infinite;
+    /* Desired hue rotation for the new color */
+    filter: hue-rotate(360deg); 
+  }
+
+  #zoomedLogo:hover {
+    filter: hue-rotate(360deg);
+  }
+
+@keyframes shine {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* GO-TO-HOME ANIMATION*/
+.go-to-home-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #555;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  z-index: 999;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.go-to-home-button:hover {
+  background-color: var(--default-color);; /* Change the color on hover */
+  transform: scale(1.8); /* Add a slight scale effect on hover */
+}
+/* END OF GO-TO-HOME ANIMATION*/
+  
+
+
+  nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 20px 30px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 40px;
+    position: relative;
+    font-family: 'Comforter', cursive;
+    font-weight: 500;
+  }
+  
+  nav ul li a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: var(--default-color);
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+  }
+  
+  nav ul li a:hover::after {
+    width: 100%;
+  }
+  
+  .header-text {
+    margin-top: 20%;
+    font-size: 30px;
+  }
+  
+  .header-text h1 {
+    font-size: 60px;
+    margin-top: 20px;
+  }
+  
+  .header-text h1 span {
+    color: #fff;
+  }
+  
+  /* The Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  /* Modal Content (The Image) */
+  .modal-content {
+    max-width: 800px;
+    margin: auto;
+    display: block;
+  }
+  
+  /* The Close Button */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.gear-icon {
+  position: fixed;
+  top: 30px; /* Set the initial position above the viewport */
+  right: 30px;
+  font-size: 50px;
+  cursor: pointer;
+  text-shadow: 0 0 10px var(--default-color);
+  transition: top 0.3s; /* Add a transition for smoother movement */
+  z-index: 2;
+}
+
+  
+  .color-options-frame {
+    
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    display: none;
+    font-size: 50px;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+    
+    
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    padding: 10px;
+    animation: fadeIn 0.5s;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+
+  .color-option {
+    margin: 5px 0;
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: background-color 1s;
+    cursor: pointer;
+    font-family: 'Clicker Script', cursive; /* Change the font-family */
+    text-transform: capitalize; /* Convert the text to capitalize */
+  }
+  
+  .color-option:hover {
+    background-color: var(--hover-color);
+    color: #fff; /* Change text color to white on hover */
+  }
+  .color-options-frame p {
+    cursor: pointer;
+    color: #fff;
+    margin: 10px;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-size: 50px;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    font-family: 'Clicker Script', cursive; /* Add the desired font-family here */
+    text-transform: capitalize; /* Convert the text to capitalize */
+  }
+  
+  .color-option:hover {
+    background-color: var(--hover-color); /* Use the custom property */
+    color: #fff;
+  }
+  
+  @keyframes rotateCounterClockwise {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+  
+  .rotating {
+    animation: rotateCounterClockwise 2s linear infinite;
+  }
+  
+
+
+/* Loading Screen Styles */
+section
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+  animation: animateBg 10s linear infinite;
+}
+
+@keyframes animateBg 
+{
+  0%
+  {
+    filter: hue-rotate(0deg);
+  }
+  100%
+  {
+    filter: hue-rotate(360deg);
+  }
+}  
+
+section .loader
+{
+  position: relative;
+  width: 120px;
+  height: 120px;
+
+}
+
+section .loader span
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(calc(18deg * var(--i)));
+}
+
+section .loader span::before
+{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #00ff0a;
+  box-shadow: 0 0 10px #00ff0a,
+              0 0 20px #00ff0a,
+              0 0 40px #00ff0a,
+              0 0 60px #00ff0a,
+              0 0 80px #00ff0a,
+              0 0 100px #00ff0a;
+  animation: animate 2s linear infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes animate
+{
+  0%
+  {
+    transform: scale(1);
+
+  }
+  80%,100%
+  {
+    transform: scale(0);
+  }
+}
+
+
+
+
+
+/* --------ABOUT SECTION------------- */
+ 
+.spacer1 
+{
+  aspect-ratio: 960/200;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.layer1 
+{
+  background-image: url('./svg_images/layer1.svg');
+}
+
+ #about{
+  padding: 40px 0; /* Adjust the top and bottom padding as needed */
+  color: #c5c3c3;
+  /* Add the following CSS to make thesection take up full viewport height */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.about-col-1{
+  flex-basis: 35%;
+  margin-top: -60px;
+  height: 650px;
+  width: 450px;
+  position: relative;
+  z-index: 1; /* Ensure the image is on top of the crimson rectangle */
+}
+
+.about-col-1 img{
+  width: 100%;
+  border-radius: 15px;
+  height: 650px;
+  width: 450px;
+}
+
+.about-col-1::after {
+  content: '';
+  position: absolute;
+  border-radius: 15px;
+  left: -33px;
+  top: 19px;
+  height: 98%;
+  width: 98%;
+  border: 7px solid var(--default-color);
+  z-index: -1; /* Move the crimson rectangle behind the image */
+}
+
+.about-col-2{
+  flex-basis: 60%;
+  height: 650px;
+  width: 850px;
+}
+.about-col-2 .sub-title{
+  font-size: 80px;
+  padding: 2px 0; /* Adjust the top and bottom padding as needed */
+  font-weight: 600;
+  color: #fff;
+  margin-top: -200px; /* Adjust the value as needed to move the Me" higher */
+  position: relative; /* Add relative positioning to the Me" element */
+  font-family: 'Borel', sans-serif; 
+  /*font-family: 'Clicker Script', cursive;*/
+}
+
+/*------TWO LINES BELOW THE SUB-TITLE-------*/
+.about-col-2 .sub-title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 25%;
+  bottom: 65px; /* Adjust the vertical position of the lines */
+  width: 390px; /* Adjust the width of the lines */
+  height: 6px; /* Adjust the height of the lines */
+  background-color: var(--default-color);
+  transform: translateX(-50%); /* Center the lines horizontally */
+}
+
+.about-col-2 .sub-title::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 25%;
+  bottom: 50px; /* Adjust the vertical position of the lines */
+  width: 195px; /* Adjust the width of the lines */
+  height: 6px; /* Adjust the height of the lines */
+  background-color: var(--default-color);
+  transform: translateX(-50%); /* Center the lines horizontally */
+}
+
+/*----------------------------------------*/
+
+.about-col-2 p
+{
+  font-size: 18px;
+  font-family: 'Lumanosimo', cursive;
+  color:#fff;
+}
+
+.tab-titles
+{
+display: flex;
+margin: 20px 0 40px;
+}
+
+.tab-titles p
+{
+  font-size: 45px;
+  font-family:'Times New Roman', Times, serif
+}
+
+.tab-links
+{
+margin-right: 50px;
+font-size: 18px;
+font-weight: 500;
+cursor: pointer;
+position: relative;
+}
+
+.tab-links::after
+{
+content: '';
+width: 0;
+height: 3px;
+background: var(--default-color);
+position: absolute;
+left: 0;
+bottom: -8px;
+transition: 0.5s;
+}
+
+.tab-links.active-link::after
+{
+width: 50%;
+}
+
+.tab-contents {
+  display: none;
+}
+
+.tab-contents.active-tab {
+  display: grid; /* Use grid layout to create two columns */
+  grid-template-columns: 1fr 1fr; /* Two columns with equal width */
+  gap: 20px; /* Adjust the gap between columns */
+}
+
+.tab-contents ul {
+  display: grid; /* Use grid layout to create two columns for the list */
+  grid-template-columns: 1fr; /* One column for the list items (initially) */
+  gap: 20px; /* Adjust the gap between list items */
+}
+
+
+.tab-contents ul li {
+  list-style: none;
+  padding: 10px; /* Add padding to create space between list items */
+  font-size: 20px;
+}
+
+.tab-contents.active-tab ul.two-columns {
+  grid-template-columns: 1fr 1fr; /* Two columns for the list items */
+}
+
+.tab-contents ul li span 
+{
+  display: block;/* Change to a block-level element */
+  color: var(--default-color);
+  font-weight: 600;
+  font-size: 24px;
+  /*padding: 10px;*/ /* Use padding instead of margin to create space */
+}
+
+.tab-contents
+{
+display: none;
+}
+.tab-contents.active-tab
+{
+display: block;
+}
+
+.about-col-1 a
+{
+  position: relative;
+  bottom: -30px;
+  left: 10px;
+  color: rgb(192, 188, 188);
+  text-decoration: wavy;
+  padding: 10px 20px;
+  font-size: 2rem;
+} 
+
+ 
+
+/*Button Animation*/
+
+
+.cta {
+  display: inline-block;
+  padding: 10px 30px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--default-color);
+  font-size: 1.5rem !important; /* Change the font size to 2.2rem */
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  border-radius: 10px;
+  font-weight: 400;
+  margin-top: 30px;
+  transition: 1s ease;
+  transition-property: background-color, color;
+  text-decoration: none;
+}
+ .cta:hover
+ {
+  color: white;
+  background-color: var(--default-color);
+ } 
+
+
+/* Wave1 Animation Styles */
+.wave1 {
+  position: absolute;
+  bottom: -1365px;
+  left: 0;
+  width: 100%;
+  /*overflow: hidden;*/
+  line-height: 0;
+  transform: rotate(180deg);
+  z-index: -1;
+}
+
+.wave1 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 100px;
+}
+
+.wave1 .shape-fill {
+  fill: var(--default-color);
+}
+
+
+
+
+
+
+ 
+/*.about-col-1
+ {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border: 10px solid white;
+ }*/
+
+
+
+/* End of Section */
+/* ---------------- */
+
+/* ============== portfolio ============= */
+
+.wave2 {
+  position: absolute;
+  top: 2330px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  z-index: 0;
+}
+
+.wave2 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 137px;
+}
+
+.wave2 .shape-fill {
+  fill: var(--default-color);
+}
+
+
+#projects
+{
+  height: 968px;
+  padding: 80px 0;
+  z-index: -1;
+  background-image: url(svg_images/low-poly-grid-haikei.svg);
+}  
+
+
+/* animation for the cards coming one after another if you remove the slider */
+/*.work:nth-child(2)
+{
+  transition-delay: 200ms;
+}
+.work:nth-child(3)
+{
+  transition-delay: 400ms;
+}
+.work:nth-child(4)
+{
+  transition-delay: 600ms;
+}*/
+/* END OF ANIMATION */
+
+
+
+
+
+#projects .sub-title 
+{
+  color: #ffffff; 
+  font-size: 60px;
+  font-family: 'Tektur', cursive;
+  font-weight: 800;
+  z-index: 1;
+  /*Add a subtle animation to the text */
+  animation: fadeInUp 1s ease-out;
+   /* Add an initial transparent shadow to the text */
+   text-shadow: 10px 10px 0px var(--default-color);
+}
+
+
+/* Add a keyframes animation for the fadeInUp effect */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    /* Start with a transparent shadow at 0% opacity */
+    text-shadow: 0px 0px 0px transparent;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    /* At 100% opacity, apply an orange shadow */
+    text-shadow: 0px 0px 10px var(--default-color);
+  }
+}
+
+.work-list
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 30px;
+  margin-top: 50px;
+}
+
+.slider
+{
+  position: relative;
+  z-index: 1;
+  width: 100%; /* Adjust the width as needed */
+  
+}
+
+.work
+{
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.8); /* Add a 3D shadow effect */
+  transition: 1s;
+  top: 10px;
+}
+
+#next, #prev
+{
+  position: relative;
+  top: 100%;
+  color:var(--default-color);
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  border: none;
+  font-size: 110px;
+  font-family: monospace;
+  font-weight: 200;
+  bottom: 350px;
+  left: -150px;
+  width: fit-content;
+  padding: 0 10px;
+  border-radius: 20%;
+  text-shadow: 2px 5px 5px #fff; /* Add the text shadow here */
+}
+
+#next:hover, #prev:hover
+{
+  background: var(--default-color);
+}
+
+
+#next
+{
+  left: unset;
+  right: -1500px;
+}
+
+
+
+
+.work img
+{
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.5s;
+}
+
+.layer
+{
+  width: 100%;
+  height: 0;
+  background: linear-gradient(rgba(0,0,0,0.6), var(--default-color));
+  border-radius: 10px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+  transition: height 0.5s;
+}
+
+.layer h3
+{
+  font-size:xx-large;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.work .layer a
+{
+  margin-top: 20px;
+  color: var(--default-color);
+  text-decoration: none;
+  font-size: 30px;
+  line-height: 60px;
+  background: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  text-align: center;
+  padding-left: 0px; /* Adjust this value as needed */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.work:hover img
+{
+  transform: scale(1.1);
+}
+.work:hover .layer
+{
+  height: 100%;
+}
+
+
+
+#button {
+  position: relative;
+  bottom: 25px;
+  left: 500px;
+  color: white;
+  text-decoration: none;
+  padding: 20px 20px;
+  font-size: 2rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add the text shadow here */
+}
+
+.btn
+{
+  display: block;
+  margin: 50px auto;
+  width: fit-content;
+  border: 1px solid var(--default-color);
+  padding: 14px 50px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #fff;
+  transition: background 0.5s;
+}
+.btn:hover
+{
+  background: var(--default-color);
+}
+
+
+.triangle1 {
+  position: absolute;
+  bottom: -2336px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.triangle1 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 35px;
+  transform: rotateY(180deg);
+}
+
+.triangle1 .shape-fill {
+  fill: #1d1d1c;
+}
+
+
+
+
+/* ---------------- Tools Section ---------------- */
+
+.spacer2
+{
+  aspect-ratio: 960/100;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.layer2 
+{
+  background-image: url('./svg_images/layered-steps-haikei.svg');
+}
+
+
+#unique-container .container
+{
+  transition-delay: 200ms;
+}
+#unique-container .icon
+{
+  transition-delay: 400ms;
+}
+#unique-container .content
+{
+  transition-delay: 600ms;
+}
+
+
+/* Styles for the container with the specific ID */
+#tools{
+  /* Add the following CSS to make thesection take up full viewport height */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url(./images/toolkit_background.jpg);
+  z-index: -2;
+}
+
+#unique-container {
+  position: relative;
+  margin: 0 auto;
+  width: 850px;
+  height: 850px;
+  bottom: -25px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  /* Add the following CSS to make thesection take up full viewport height */
+  /*height: 100vh;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  z-index: 0;
+}
+
+/* Styles for elements inside the container */
+
+#unique-container .icon {
+  position: relative;
+  left: -95%; /* Adjust the position of the circle-icons*/
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+#unique-container .icon .imgBx {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  bottom: 340px;
+  border-radius: 50%;
+  transition: 0.5s;
+  border: 1px solid #fff;
+  box-shadow: 0 0 0 4px #222,
+              0 0 0 6px #fff;
+  transform: rotate(17deg) rotate(calc(360deg/5 * var(--i))) ;
+  transform-origin: 495px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+#unique-container .icon .imgBx.active
+{
+    box-shadow: 0 0 0 4px #222, 
+    0 0 0 12px var(--default-color);
+}
+
+#unique-container .icon .imgBx img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    transform: rotate(-17deg) rotate(calc(-360deg/5 * var(--i))); /* Remove the previous rotation and apply the updated rotation */
+    transition: 0.5s;
+    filter: grayscale(1);
+}
+
+#unique-container .icon .imgBx.active img
+{
+    filter: grayscale(0);
+}
+
+#unique-container  .content
+{
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#unique-container  .content::before
+{
+    content: "";
+    position: absolute;
+    inset: 80px;
+    border: 6px solid transparent;
+    border-left: 4px solid red;
+    border-right: 4px solid #fff;
+    border-radius: 50%;
+    animation: animte_01 5s linear infinite;
+    z-index: -1;
+    pointer-events: none;
+    z-index: -1;
+}
+@keyframes animte_01
+{
+    0%
+    {
+        rotate: 0deg;
+    }
+    100%
+    {
+        rotate: 360deg;
+    }
+}
+
+#unique-container .content::after
+{
+    content: "";
+    position: absolute;
+    inset: 120px;
+    border: 4px solid transparent;
+    border-left: 4px solid var(--default-color);
+    border-right: 4px solid #fff;
+    border-radius: 50%;
+    animation: animte_02 2.5s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes animte_02
+{
+    0%
+    {
+        rotate: 360deg;
+    }
+    100%
+    {
+        rotate: 0deg;
+    }
+}
+
+#unique-container .contentBx
+{
+    position: absolute;
+    transform: scale(0);
+    transition: 0.5s;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#unique-container .contentBx.active
+{
+    transform: scale(1);
+    opacity: 1;
+    transition-delay: 0.5s;
+}
+
+#unique-container .contentBx .card
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#unique-container .contentBx .card .imgBx
+{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#unique-container .contentBx .card .imgBx img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#unique-container .contentBx .card .textBx
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#unique-container .contentBx .card .textBx h2
+{
+    position: relative;
+    font-size: 2em;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1em;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+#unique-container .contentBx .card .textBx h2 span
+{
+    font-size: 0.8em;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+#unique-container .contentBx .card .textBx .sci
+{
+    position: relative;
+    display: flex;
+    gap: 7px;
+    margin-top: 10px;
+}
+#unique-container .contentBx .card .textBx .sci li
+{
+    list-style: none;
+    margin: 10px; /* Add margin to create space between buttons */
+}
+
+#unique-container .contentBx .card .textBx .sci li a,
+#unique-container .contentBx .card .textBx .sci li img
+{
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #bbb8b8;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 1s ease-in-out; /* Add transition property for the dilation effect */    
+    box-shadow: 10px 10px 10px var(--default-color); /* Add a 3D shadow effect */
+    z-index: 1;
+    
+}
+
+#unique-container .contentBx .card .textBx .sci li a:hover,
+#unique-container .contentBx .card .textBx .sci li img:hover
+{
+    background: var(--default-color);
+    transform: scale(1.1);
+}
+
+
+/* Contact section */
+
+/* ============ contact ================= */
+
+#contact 
+{
+  position: relative; 
+  height: 60vh;
+  z-index: 1;
+}
+
+#contact .container {
+  display: flex;
+}
+
+#contact-contents, #copyright-section {
+  opacity: 1; /* Set initial opacity */
+  transition: opacity 2s ease-in-out; /* Add transition for smooth fading */
+}
+
+
+#contact-contents.fade-out,
+#copyright-section.fade-out{
+  opacity: 0;
+  pointer-events: none;
+}
+
+/*RESET BUTTON*/
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+
+#resetButton {
+  position: fixed;
+  bottom: 100px;
+  right: 15px;
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--default-color);
+
+  border: 6px solid var(--default-color);
+  transition: 2s ease;
+  text-decoration: none !important;
+  padding: 10px 10px;
+  cursor: pointer;
+  transition: opacity 5s, pointer-events 0.5s; /* Add pointer-events to the transition */
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+#resetButton i{
+  font-size: 20px;
+}
+
+#resetButton:hover {
+  text-shadow: 0 0 1px white, 0px 10px 2px black ;
+  transition: 3s ease;
+  background-color: var(--default-color); /* Change the color on hover */
+  transform: scale(1.2); /* Add a slight scale effect on hover */
+}
+
+#resetButton.hidden{
+  display: none;
+}
+
+#resetButton.fade-out {
+  animation: fadeOutAnimation 1s; /* Apply the fade-out animation */
+  animation-fill-mode: forwards; /* Keep the final style of the animation */
+  pointer-events: none; /* Disable pointer interactions when hidden */
+}
+
+/*END OF REVEAL BUTTON*/
+
+
+
+.contact-content {
+  position: absolute; /* Position the content within the spacer */
+  top: 0;
+  left: 0px;
+  width: 100%;
+  display: flex;
+}
+
+.contact-left
+{
+  /* Set the width of the 'Contact Me' column */
+  flex-basis: 70%;
+  margin-left: 40px; /* You can adjust this value as needed */
+}
+.contact-right
+{
+  /* Set the width of the contact form column */
+  flex-basis: 30%;
+  /*padding: 10%;*/
+  margin-top: 280px;
+  margin-right: 50px;
+}
+
+
+
+
+#lower {
+  aspect-ratio: 960/50;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-top: 290px; /* Adjust this value to position the spacer further down */
+  z-index: -1;
+}
+
+
+.contact-left h1{
+  margin-top: 130px;
+  font-size: 80px;
+  font-family: 'Courier New', Courier, monospace; 
+}
+
+.contact-left h1 span {
+  color: var(--default-color);
+  font-family: 'Courier New', Courier, monospace;
+}  
+
+.contact-left h2{
+  font-size: 40px;
+  margin-top: 50px;
+  font-family: 'Borel', cursive;
+}
+
+.context1 {
+  font-family:serif;
+  font-size: 20px;
+  margin-right: 140px; /* You can adjust this value as needed */
+}
+
+.context2 {
+  font-family:serif;
+  font-size: 20px;
+  margin-right: 167px; /* You can adjust this value as needed */
+}
+
+.context3 {
+  font-family:serif;
+  font-size: 20px;
+  margin-right: 56.5px; /* You can adjust this value as needed */
+}
+.context4 {
+  font-family:serif;
+  font-size: 20px;
+  margin-right: 112px; /* You can adjust this value as needed */
+}
+
+
+.contact-left p
+{
+  margin-top: 50px;
+  font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 800;
+}
+
+.contact-left p i
+{
+  color: var(--default-color);
+  margin-right: 15px;
+  font-size: 25px;
+}
+.social-icons
+{
+  margin-top: 40px;
+}
+.social-icons a
+{
+  text-decoration: none;
+  font-size: 40px;
+  margin-right: 35px;
+  color: #ababab;
+  display: inline-block;
+  transition: transform 0.5s;
+}
+.social-icons a:hover
+{
+  color: var(--default-color);
+  transform: translateY(-5px);
+}
+
+.contact-right form
+{
+  width: 100%;
+}
+
+form input, form textarea
+{
+  width: 100%;
+  border-color: var(--default-color);
+  outline: none;
+  background: transparent;
+  padding: 15px;
+  margin: 15px 0;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 6px;
+}
+
+.copyright
+{
+  width: 35%;
+  text-align: center;
+  padding: 10px 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color:#fff;
+  font-weight: 400;
+  border-radius: 10px;
+  margin-top: 760px;
+  margin-left: 650px;
+}
+.copyright p
+{
+  font-size: 18px;
+}
+.copyright i,span
+{
+  color: var(--default-color);
+}
+
+
+/* DROP DOWN MENU FOR CONTINENT SELECTION*/
+
+input,select{
+  padding: 15px;
+  margin: 15px 0;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 6px;
+  background: transparent;
+  border: 2px solid var(--default-color);
+  width: 550px;
+}
+
+/* END OF DROP DOWN MENU */
+
+
+  /* BLOB ANIMATION */
+
+  /* Define the common keyframes */
+
+@keyframes zoomAndResetAnimation {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.3);
+  }
+}
+
+  .blob-animation{
+    position: absolute;
+    top: 150px;
+    left: 710px;
+    width: 30%;
+    height: 30%;
+    z-index: -1;
+    transition: transform 1s; /* Add a transition for smooth scaling */
+  }
+
+  .blob-animation.enjoy-zoom,
+  .blob-animation2.enjoy-zoom {
+    animation: zoomAndResetAnimation var(--animation-duration, 5000ms) cubic-bezier(0.165, 0.84, 0.44, 1) forwards; /* Apply the zoom animation */
+  }
+
+  .blob-animation.reset-size,
+  .blob-animation2.reset-size {
+    animation: zoomAndResetAnimation var(--animation-duration, 5000ms) cubic-bezier(0.165, 0.84, 0.44, 1) reverse forwards; /* Apply the reset animation */
+}
+
+  .blob-animation2 /*glowing blob*/ 
+  {
+    position: absolute;
+    top: 180px;
+    left: 710px;
+    width: 30%;
+    height: 30%;
+    filter: blur(100px);
+    z-index: -1;
+    transition: transform 0.5s; /* Add a transition for smooth scaling */
+    justify-content: center; /* Horizontally center the blob */
+    align-items: center; /* Vertically center the blob */
+   }
+
+
+  .spacer3 {
+    aspect-ratio: 960/70;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: -1;
+  }
+
+  .layered-peaks {
+    background-image: url("./layered-peaks.svg");
+  }
+
+  .flip {
+    transform: rotate(180deg);
+  }
+
+/* Button's text*/
+.btn-text
+{
+    display: inline-block;
+    color: white;
+    
+    
+    text-transform: uppercase;
+    font-size: 1.5rem !important; /* Change the font size to 2.2rem */
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    font-weight: 400;
+}
+/* End of Button's text*/
+
+
+/* Button's icon */
+.btn-icon {
+  display: inline-block;
+  color: white;
+  position: relative;
+}
+
+.btn-icon i {
+  font-size: 2rem;
+  margin-left: 20px;
+}
+
+.btn-icon::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: var(--default-color); /* Adjust the background color */
+  border-radius: 50%;
+  top: 50%;
+  left: 67%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+/* End of Button's icon */
+
+
+/*ENJOY BUTTON*/
+/* Adjust the positioning of the "enjoy" button */
+.enjoy {
+  position: relative !important;
+  top: -60px; /* You can adjust this value to align the button properly */
+  left: 340px; /* Add a bit of left spacing between the buttons */
+  background-color: transparent;
+  border: 2px solid var(--default-color);
+  box-shadow: 0 0 50px var(--default-color), 0 0 10px white;
+  border-radius: 50%;
+  width: fit-content; /* Make the width fit according to the text's size */
+  padding: 10px 40px; /* Add padding to control button's height and width */
+  transition: 2s ease;
+  text-align: center; /* Align the text at the center of the button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  overflow: hidden; /* Hide overflowing hue-rotated content */
+}
+
+/* Styling for the "enjoy" button on hover */
+.enjoy:hover {
+  animation: hueRotate 2s infinite ease-in-out; /* Smoother animation with ease-in-out */
+  text-shadow: 10px -10px 2px var(--default-color), 0 0 10px white;
+  transition: 3s ease;
+}
+
+/* Define the hue-rotate animation */
+@keyframes hueRotate {
+  0% {
+      filter: hue-rotate(0deg);
+  }
+  100% {
+      filter: hue-rotate(360deg);
+  }
+}
+
+
+
+/* Adjust the size of the button's text */
+#contact .enjoy .btn-text {
+  display: inline-block;
+  color: white;
+  text-transform: uppercase;
+  font-size: 2rem !important; /* Adjust the font size as needed */
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  font-weight: 800;
+}
+
+
+
+
+/*END OF ENJOY BUTTON*/
+
+
+
+
+
+
+/* ------------- CSS for small screens ------------- */
+
+nav .fa-2xl
+{
+  display: none;
+}
+
+@media only screen and (max-width: 600px){
+  #header{
+    background-image: url(images/phone-background.png);
+  }
+  .header-text{
+    margin-top: 100%;
+    font-size: 16px;
+  }
+  .header-text h1{
+    font-size: 30px;
+  }
+
+  nav .fa-2xl
+  {
+    display: block;
+    font-size: 25px;
+  }
+  nav ul
+  {
+    background: #ff004f;
+    position: fixed;
+    top: 0;
+    right: -200px;
+    width: 200px;
+    height: 100vh;
+    padding-top: 50px;
+    z-index: 2;
+    transition: right 0.5s;
+  }
+  nav ul li
+  {
+    display: block;
+    margin: 25px;
+  }
+  nav ul li .fa-2xl{
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
+  }
+  .sub-title{
+    font-size: 40px;
+  }
+  .about-col-1, .about-col-2
+  {
+    flex-basis: 100%;
+  }
+  .about-col-1
+  {
+    margin-bottom: 30px;
+  }
+  .about-col-2
+  {
+    font-size: 14px;
+  }
+  .tab-links
+  {
+    font-size: 16px;
+    margin-right: 20px;
+  }
+  .contact-left, .contact-right
+  {
+    flex-basis: 100%;
+  }
+  .copyright
+  {
+    font-size: 12px;
+  }
+}
+#msg{
+  color: #61b752;
+  margin-top: -40px;
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

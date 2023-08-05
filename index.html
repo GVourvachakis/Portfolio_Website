@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="./images/gv_icon.png" type="image/png" />
+    <script
+      src="https://kit.fontawesome.com/c4254e24a8.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Borel&family=Clicker+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lumanosimo&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Add this after the Google Fonts link to override the font styles if needed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tektur:wght@600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
+
+    
+    <!-- ...other scripts and stylesheets... -->
+    <script defer src="scroll.js"></script>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <section>
+      <div class="loader">
+        <span style="--i: 1"></span>
+        <span style="--i: 2"></span>
+        <span style="--i: 3"></span>
+        <span style="--i: 4"></span>
+        <span style="--i: 5"></span>
+        <span style="--i: 6"></span>
+        <span style="--i: 7"></span>
+        <span style="--i: 8"></span>
+        <span style="--i: 9"></span>
+        <span style="--i: 10"></span>
+        <span style="--i: 11"></span>
+        <span style="--i: 12"></span>
+        <span style="--i: 13"></span>
+        <span style="--i: 14"></span>
+        <span style="--i: 15"></span>
+        <span style="--i: 16"></span>
+        <span style="--i: 17"></span>
+        <span style="--i: 18"></span>
+        <span style="--i: 19"></span>
+        <span style="--i: 20"></span>
+      </div>
+    </section>
+
+    <div id="header">
+      <div class="container">
+        <nav>
+          <img src="images/web_logo.png" class="logo" id="colorChangeLogo" />
+          <ul id="sidemenu">
+            <li><a href="#header">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#tools">Toolkit</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <div id="colorOptionsFrame" class="color-options-frame">
+            <div
+              class="color-option"
+              data-color="#007bff"
+              onclick="changeColor('#007bff')"
+            >
+              Default
+            </div>
+            <div
+              class="color-option"
+              data-color="#b907a4"
+              onclick="changeColor('#b907a4')"
+            >
+              Purple
+            </div>
+            <div
+              class="color-option"
+              data-color="#25eb25"
+              onclick="changeColor('#25eb25')"
+            >
+              Green
+            </div>
+            <div
+              class="color-option"
+              data-color="#FFFF00"
+              onclick="changeColor('#FFFF00')"
+            >
+              Yellow
+            </div>
+            <div
+              class="color-option"
+              data-color="#f27908"
+              onclick="changeColor('#f27908')"
+            >
+              Orange
+            </div>
+          </div>
+          <i
+            class="fa-solid fa-gear gear-icon"
+            id="gearIcon"
+            onmouseover="startRotation()"
+            onmouseout="stopRotation()"
+            onclick="toggleColorOptionsFrame()"
+          ></i>
+        </nav>
+        <div class="header-text">
+          <p>Scientific ML Researcher</p>
+          <h1>
+            Hi,<br />
+            <span id="dynamic-text"></span>
+          </h1>
+        </div>
+      </div>
+    </div>
+
+     
+
+    <!-- The Modal -->
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="zoomedLogo" />
+    </div>
+
+    <!-- The audio element for the click sound -->
+    <audio id="clickSound" preload="auto">
+      <source src="clickSound.wav" type="audio/mpeg" />
+      <!-- Add additional source elements for other audio formats if needed -->
+    </audio>
+
+
+    <!-- -----------------About------------------------------ -->
+
+    <div class="spacer1 layer1"></div>
+
+    <div id="about">
+      <div class="container hidden-left">
+        <div class="row">
+          <div class="about-col-1">
+            <img src="images/hero.jpg" alt="Profile Image" />
+            <a href="images/my-resume.pdf" download class="cta"
+              >Download Resume</a
+            >
+          </div>
+          <div class="about-col-2">
+            <h1 class="sub-title">About Me</h1>
+            <p>
+              I'm a devoted scientist who embarked on a new journey into
+              technology. With a background in Physics, my world once revolved
+              around equations and theories. Today, I'm adopting coding and data
+              science to innovate and create. Beyond the realm of research, I
+              find solace in sketching imaginative worlds and partaking in
+              activities that mirror my journey of exploration. Walk alongside
+              me as we entwine the particles of science and the circuits of
+              technology, illuminating the path to a future enriched by
+              boundless exploration.
+            </p>
+            <div class="tab-titles">
+              <p class="tab-links active-link" onclick="opentab('skills')">
+                Skills
+              </p>
+              <p class="tab-links" onclick="opentab('experience')">
+                Experience
+              </p>
+              <p class="tab-links" onclick="opentab('education')">Education</p>
+            </div>
+            <div class="tab-contents active-tab" id="skills">
+              <ul class="two-columns">
+                <!-- Add the class "two-columns" to the ul element -->
+                <li>
+                  <span>Data Science</span><br />Extracting insights from data
+                  for informed decision-making
+                </li>
+                <li>
+                  <span>Machine Learning</span><br />Developing algorithms that
+                  enable intelligent predictions
+                </li>
+                <li>
+                  <span>Web Development</span><br />Creating digital experiences
+                  through code and design
+                </li>
+                <li>
+                  <span>Problem Solving</span><br />Analyzing complexities to
+                  find elegant solutions
+                </li>
+                <li>
+                  <span>Leadership and Collaboration</span><br />Orchestrating
+                  teamwork and innovation for impactful results
+                </li>
+                <li>
+                  <span>Artistic Expression</span><br />Communicating ideas
+                  through visual creativity and design
+                </li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="experience">
+              <ul>
+                <li>
+                  <span>Future</span><br />Enriching skills through
+                  post-military service education
+                </li>
+                <li>
+                  <span>Summer of 2023</span><br />Comprehensive skill-building,
+                  spanning Python development, machine learning, and earning
+                  distinction in a top-tier Skill Assessment
+                </li>
+                <li>
+                  <span>2019-2023</span><br />
+                  Explored theoretical physics, condensed matter, materials
+                  science, and electrical engineering
+                </li>
+              </ul>
+            </div>
+            <div class="tab-contents" id="education">
+              <ul>
+                <li>
+                  <span>2019-2022</span><br />B.Sc. in Physics, University of
+                  Crete
+                </li>
+                <li>
+                  <span>Summer of 2023</span><br />
+                  <ol>
+                    <li>
+                      "Complete Python Developer" Certification from Udemy
+                    </li>
+                    <li>
+                      "Intro to Machine Learning" and "Intermediate Machine
+                      Learning" Certifications from Kaggle
+                    </li>
+                    <li>
+                      LinkedIn Skill Assessment certification in Machine
+                      Learning acquired on the initial attempt
+                    </li>
+                  </ol>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wave1">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+            opacity=".25"
+            class="shape-fill"
+          ></path>
+          <path
+            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+            opacity=".5"
+            class="shape-fill"
+          ></path>
+          <path
+            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ----------------- Projects ------------------------------ -->
+    <div id="projects">
+      <div class="container">
+        <h1 class="sub-title hidden-ascend" id="text">My Work</h1>
+        <div class="work-list slider"> <!-- SLIDER CLASS IS INSERTED FOR THE CARDS-->
+          <!-- PRODUCT CONTAINER -->
+          <div class="work hidden-left">  <!-- hidden-left does NOT work in behind images -->
+            <img src="images/work-1.png" />
+            <div class="layer">
+              <h3>Web Scraping Hacker News</h3>
+              <p>
+                This project entails a robust web scraping program for Hacker
+                News, spotlighting articles with over 100 votes. It consists of
+                two key components:
+              </p>
+              <ul>
+                <li>Terminal-run core script.</li>
+                <li>Data extraction module.</li>
+              </ul>
+              <p>
+                This initiative reflects a professional commitment to efficient
+                data extraction, demonstrating technical prowess and strategic
+                data curation techniques.
+              </p>
+
+              <a
+                href="https://github.com/GVourvachakis/Webscrapping"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa fa-github" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="work"> <!-- CENTERED IMAGE -->
+            <img src="images/work-2.png" />
+            <div class="layer">
+              <h3>ImageAI-Based Image Recognition System using MobileNetV2</h3>
+              <p>
+                This Computer Vision project harnesses the ImageAI library's
+                MobileNetV2 model for image recognition. Via the
+                'classify_image' function, users input images and model paths to
+                receive key object predictions and their associated
+                probabilities. The project exemplifies strong programming
+                practices, demonstrating adeptness in computer vision and
+                programming for reliable image recognition outcomes.
+              </p>
+              <a
+                href="https://github.com/GVourvachakis/ComputerVisionProject"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa fa-github" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+          <div class="work hidden-left"> <!-- hidden-left does NOT work in behind images -->
+            <img src="images/questionmark.jpg" />
+            <div class="layer">
+              <h3>TO BE CONTINUED...</h3>
+              <p>
+                More of my most interesting projects will be added to this website in future updates.
+              </p>
+              <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+            </div>
+          </div>
+        </div>
+        <button id="prev" class="hidden-left">&lt;</button>
+        <button id="next" class="hidden-right">&gt;</button>
+        
+        <a href="https://github.com/GVourvachakis?tab=repositories" target="_blank" class="cta" id="button"
+          >VIEW All</a
+        >
+      </div>
+      <div class="wave2">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+            opacity=".25"
+            class="shape-fill"
+          ></path>
+          <path
+            d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+            opacity=".5"
+            class="shape-fill"
+          ></path>
+          <path
+            d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+            class="shape-fill"
+          ></path>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ----------------- Tools ------------------------------ -->
+
+    <div class="spacer2 layer2"></div>
+
+    <div id="tools">
+      <div class="container hidden-right" id="unique-container">
+        
+
+        <div class="content hidden-right">
+          <div class="contentBx activate" id="content1">
+            <div class="card">
+              <div class="imgBx">
+                <img src="./tools_images/data_science.png" />
+              </div>
+              <div class="textBx">
+                <h2>Data Science</h2>
+                <ul class="sci">
+                  <li><img src="./tools_images/excel_logo.png" /></li>
+                  <li><img src="./tools_images/Matplotlib_logo.png" /></li>
+                  <li><img src="./tools_images/Pandas_logo.png" /></li>
+                  <li><img src="./tools_images/Jupyter_logo.png" /></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="contentBx" id="content2">
+            <div class="card">
+              <div class="imgBx">
+                <img src="./tools_images/machine_learning.png" />
+              </div>
+              <div class="textBx">
+                <h2>Machine Learning</h2>
+                <ul class="sci">
+                  <li><img src="./tools_images/tensorflow_logo.png" /></li>
+                  <li><img src="./tools_images/scikit-learn_logo.png" /></li>
+                  <li><img src="./tools_images/keras_logo.png" /></li>
+                  <li><img src="./tools_images/ImageAI_logo.png" /></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="contentBx" id="content3">
+            <div class="card">
+              <div class="imgBx">
+                <img src="./tools_images/engineering.jpg" />
+              </div>
+              <div class="textBx">
+                <h2>Engineering<br /><span>& Industrial Design</span></h2>
+                <ul class="sci">
+                  <li><img src="./tools_images/matlab_logo.png" /></li>
+                  <li>
+                    <img src="./tools_images/Wolfram_Mathematica-Logo.png" />
+                  </li>
+                  <li><img src="./tools_images/originlab_logo.png" /></li>
+                  <li><img src="./tools_images/LTspice_logo.png" /></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="contentBx" id="content4">
+            <div class="card">
+              <div class="imgBx">
+                <img src="./tools_images/WebDev.jpg" />
+              </div>
+              <div class="textBx">
+                <h2>Web Development</h2>
+                <ul class="sci">
+                  <li><img src="./tools_images/html_logo.png" /></li>
+                  <li><img src="./tools_images/css_logo.png" /></li>
+                  <li><img src="./tools_images/js_logo.png" /></li>
+                  <li><img src="./tools_images/VScode_logo.png" /></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="contentBx" id="content5">
+            <div class="card">
+              <div class="imgBx">
+                <img src="./tools_images/graphic.png" />
+              </div>
+              <div class="textBx">
+                <h2>Graphic Design</h2>
+                <ul class="sci">
+                  <li><img src="./tools_images/inkscape_logo.png" /></li>
+                  <li><img src="./tools_images/blender_logo.png" /></li>
+                  <li><img src="./tools_images/gimp_logo.png" /></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="icon hidden-right">
+          <div class="imgBx active" style="--i: 1" data-id="content1">
+            <img src="./tools_images/data_science.png" />
+          </div>
+          <div class="imgBx" style="--i: 2" data-id="content2">
+            <img src="./tools_images/machine_learning.png" />
+          </div>
+          <div class="imgBx" style="--i: 3" data-id="content3">
+            <img src="./tools_images/engineering.jpg" />
+          </div>
+          <div class="imgBx" style="--i: 4" data-id="content4">
+            <img src="./tools_images/WebDev.jpg" />
+          </div>
+          <div class="imgBx" style="--i: 5" data-id="content5">
+            <img src="./tools_images/graphic.png" />
+          </div>
+        </div>
+      </div>
+      <div class="triangle1">
+        <svg
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path d="M1200 0L0 0 598.97 114.72 1200 0z" class="shape-fill"></path>
+        </svg>
+      </div>
+    </div>
+
+
+
+    
+    <!-- Contact Section -->
+    
+    <div id="contact">
+      <div class="spacer3 layered-peaks"></div>
+      <div class="container">
+        <div class="row">
+          <div id="contact-contents" class="contact-content">
+          <div class="contact-left hidden-left">
+            <h1>&lt;Contact <span>Me</span>&gt;</h1>
+            <h2 class="sub-title">Contact me here</h2>
+            <p><i class="fas fa-map-marker-alt"></i> <span class="context1">Location</span>  : Heraklion, Crete, Greece</p>
+            <p><i class="fas fa-envelope"></i> <span class="context2">Email</span>  : vourvachakisgeorgios@gmail.com</p>
+            <p><i class="fa fa-phone"></i> <span class="context3">Mobile Number</span>  : +30 6988430311</p>
+            <p><i class="fas fa-globe-europe"></i> <span class="context4">Languages</span> : Greek, English</p>
+            <div class="social-icons">
+              <a href="https://www.researchgate.net/profile/Georgios-Vourvachakis" target="_blank"><i class="fa-brands fa-researchgate"></i></a>
+              <a href="https://www.linkedin.com/in/georgios-vourvachakis-79b1a4283/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://github.com/GVourvachakis" target="_blank"><i class="fa-brands fa-github"></i></a>
+              <a href="https://en.uoc.gr/" target="_blank"><i class="fa-solid fa-building-columns"></i></a>
+            </div>
+            <a href="./images/my-cv.pdf" download class="cta">
+              <span class="btn-text">Download CV</span>
+              <span class="btn-icon"><i class="fas fa-download"></i></span>
+            </a>
+           </div>
+          <div class="contact-right hidden-right">
+            <form id="contact-form" name="contact-form" action="https://formspree.io/f/mleygzwa" method="POST">
+              <input type="text" name="Name" placeholder="Full Name" required>
+              <input type="email" name="Email" placeholder="Email" required>
+              <select name="Continent">
+                  <option>Europe</option>
+                  <option>North America</option>
+                  <option>Asia</option>
+                  <option>South America</option>
+                  <option>Africa</option>
+                  <option>Oceania</option>
+                  <option>Antarctica</option>                
+              </select>
+              <textarea name="Message" rows="7" placeholder="Message"></textarea>
+              <button type="submit" class="cta ">Submit
+                <span class="btn-icon"><i class="fa-regular fa-paper-plane"></i></span>
+              </button>
+              <a id="enjoyButton" href="#contact" class="enjoy hidden-ascend">
+                <span class="btn-text">Enjoy</span>
+              </a>
+             </form>
+            
+            <span id="msg"></span>
+          </div>
+          
+          </div>
+          
+        </div>
+
+        <button id="resetButton" class="reset hidden hidden-ascend">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- BLOB ANIMATION-->
+      <div id="blobAnimation" class="blob-animation hidden-ascend">
+        <svg
+          viewBox="0 0 500 500"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="100%"
+          id="blobSvg"
+        >
+          <defs>
+            <lineargradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color: var(--default-color)"></stop>
+              <stop offset="20%" style="stop-color: var(--default-color)"></stop>
+              <stop offset="100%" style="stop-color: rgb(250, 5, 5)"></stop>
+            </lineargradient>
+          </defs>
+          <path fill="url(#gradient)">
+            <animate
+              attributeName="d"
+              dur="10000ms"
+              repeatCount="indefinite"
+              values="
+              M439,300.5Q460,351,420.5,383Q381,415,341.5,445.5Q302,476,250,477.5Q198,479,184,414.5Q170,350,113,347Q56,344,54,297Q52,250,49.5,201Q47,152,87.5,124.5Q128,97,172.5,101.5Q217,106,248,115Q279,124,307.5,133Q336,142,389,149.5Q442,157,430,203.5Q418,250,439,300.5Z;
+            
+              
+              M434.5,281.5Q380,313,368,348Q356,383,327.5,424.5Q299,466,260,420.5Q221,375,181.5,380Q142,385,130.5,349Q119,313,65.5,281.5Q12,250,62.5,217Q113,184,126,147Q139,110,180.5,118.5Q222,127,259.5,85Q297,43,325,82Q353,121,384,146Q415,171,452,210.5Q489,250,434.5,281.5Z;
+              
+              
+              M448,287.5Q407,325,380,352.5Q353,380,325,418.5Q297,457,255,435.5Q213,414,171.5,407Q130,400,130.5,353.5Q131,307,86.5,278.5Q42,250,66,211.5Q90,173,105,130Q120,87,167.5,92.5Q215,98,252.5,85.5Q290,73,336,79Q382,85,388.5,132.5Q395,180,442,215Q489,250,448,287.5Z;
+              
+              
+              M408.5,294.5Q434,339,386,349.5Q338,360,317.5,408Q297,456,249,459.5Q201,463,168,428.5Q135,394,88.5,372Q42,350,62,300Q82,250,96.5,216.5Q111,183,139,164.5Q167,146,184.5,93Q202,40,243,70.5Q284,101,316.5,113.5Q349,126,372.5,153Q396,180,389.5,215Q383,250,408.5,294.5Z;
+              
+              
+              M439,300.5Q460,351,420.5,383Q381,415,341.5,445.5Q302,476,250,477.5Q198,479,184,414.5Q170,350,113,347Q56,344,54,297Q52,250,49.5,201Q47,152,87.5,124.5Q128,97,172.5,101.5Q217,106,248,115Q279,124,307.5,133Q336,142,389,149.5Q442,157,430,203.5Q418,250,439,300.5Z
+              "
+              >
+            <!-- Add 1st and Last value same for loop animation -->
+            </animate>
+          </path>
+        </svg>
+      </div>
+      
+      <div class="blob-animation2 hidden-ascend">
+        <svg
+          viewBox="0 0 500 500"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="100%"
+        >
+          <defs>
+            <lineargradient x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color: var(--default-color)"></stop>
+              <stop offset="20%" style="stop-color: var(--default-color)"></stop>
+              <stop offset="100%" style="stop-color: rgb(250, 5, 5)"></stop>
+            </lineargradient>
+          </defs>
+          <path fill="url(#gradient)">
+            <animate
+              attributeName="d"
+              dur="10000ms"
+              repeatCount="indefinite"
+              values="
+              M439,300.5Q460,351,420.5,383Q381,415,341.5,445.5Q302,476,250,477.5Q198,479,184,414.5Q170,350,113,347Q56,344,54,297Q52,250,49.5,201Q47,152,87.5,124.5Q128,97,172.5,101.5Q217,106,248,115Q279,124,307.5,133Q336,142,389,149.5Q442,157,430,203.5Q418,250,439,300.5Z;
+            
+              
+              M434.5,281.5Q380,313,368,348Q356,383,327.5,424.5Q299,466,260,420.5Q221,375,181.5,380Q142,385,130.5,349Q119,313,65.5,281.5Q12,250,62.5,217Q113,184,126,147Q139,110,180.5,118.5Q222,127,259.5,85Q297,43,325,82Q353,121,384,146Q415,171,452,210.5Q489,250,434.5,281.5Z;
+              
+              
+              M448,287.5Q407,325,380,352.5Q353,380,325,418.5Q297,457,255,435.5Q213,414,171.5,407Q130,400,130.5,353.5Q131,307,86.5,278.5Q42,250,66,211.5Q90,173,105,130Q120,87,167.5,92.5Q215,98,252.5,85.5Q290,73,336,79Q382,85,388.5,132.5Q395,180,442,215Q489,250,448,287.5Z;
+              
+              
+              M408.5,294.5Q434,339,386,349.5Q338,360,317.5,408Q297,456,249,459.5Q201,463,168,428.5Q135,394,88.5,372Q42,350,62,300Q82,250,96.5,216.5Q111,183,139,164.5Q167,146,184.5,93Q202,40,243,70.5Q284,101,316.5,113.5Q349,126,372.5,153Q396,180,389.5,215Q383,250,408.5,294.5Z;
+              
+              
+              M439,300.5Q460,351,420.5,383Q381,415,341.5,445.5Q302,476,250,477.5Q198,479,184,414.5Q170,350,113,347Q56,344,54,297Q52,250,49.5,201Q47,152,87.5,124.5Q128,97,172.5,101.5Q217,106,248,115Q279,124,307.5,133Q336,142,389,149.5Q442,157,430,203.5Q418,250,439,300.5Z
+              "
+              >
+            <!-- Add 1st and Last value same for loop animation -->
+            </animate>
+          </path>
+        </svg>
+      </div>
+      
+
+      <div id="copyright-section" class="copyright">
+        <p>Created By <span>Georgios Vourvachakis</span> | <i class="fa-regular fa-copyright"></i> 2023 All rights reserved. </p>
+      </div>
+
+    </div>
+
+    <div id="lower" class="spacer4 layered-peaks flip"></div>
+
+    <!-- GO-TO-HOME ANIMATION-->
+    <button
+    id="goToHomeButton"
+    class="go-to-home-button"
+    onclick="scrollToTop()"
+  >
+    <i class="fa fa-home" id="toggleButton"></i>
+  </button>
+
+
+    <script>
+      let imgBx = document.querySelectorAll(".imgBx");
+      let contentBx = document.querySelectorAll(".contentBx");
+
+      for (let i = 0; i < imgBx.length; i++) {
+        imgBx[i].addEventListener("mouseover", function () {
+          for (let i = 0; i < contentBx.length; i++) {
+            contentBx[i].className = "contentBx";
+          }
+          document.getElementById(this.dataset.id).className =
+            "contentBx active";
+
+          for (let i = 0; i < imgBx.length; i++) {
+            imgBx[i].className = "imgBx";
+          }
+          this.className = "imgBx active";
+        });
+      }
+    </script>
+
+    
+    <script>
+      var sidemenu = document.getElementById("sidemenu");
+  
+      function openmenu(){
+        sidemenu.style.right = "0";
+      }
+      function closemenu(){
+            sidemenu.style.right = "-200px";
+          }
+  
+    </script>
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
