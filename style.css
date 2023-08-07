@@ -418,6 +418,7 @@ section .loader span::before
 .spacer1 
 {
   aspect-ratio: 960/200;
+
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -484,7 +485,7 @@ section .loader span::before
   padding: 2px 0; /* Adjust the top and bottom padding as needed */
   font-weight: 600;
   color: #fff;
-  margin-top: -200px; /* Adjust the value as needed to move the Me" higher */
+  margin-top: -150px; /* Adjust the value as needed to move the Me" higher */
   position: relative; /* Add relative positioning to the Me" element */
   font-family: 'Borel', sans-serif; 
   /*font-family: 'Clicker Script', cursive;*/
@@ -649,7 +650,7 @@ display: block;
 /* Wave1 Animation Styles */
 .wave1 {
   position: absolute;
-  bottom: -1365px;
+  bottom: -1370px;
   left: 0;
   width: 100%;
   /*overflow: hidden;*/
@@ -692,7 +693,7 @@ display: block;
 
 .wave2 {
   position: absolute;
-  top: 2330px;
+  top: 2335px;
   left: 0;
   width: 100%;
   overflow: hidden;
@@ -1493,18 +1494,18 @@ input,select{
     transform: scale(1);
   }
   100% {
-    transform: scale(1.3);
+    transform: scale(1.3) translateY(-25%);;
   }
 }
 
   .blob-animation{
     position: absolute;
-    top: 150px;
+    top: 200px;
     left: 710px;
     width: 30%;
     height: 30%;
     z-index: -1;
-    transition: transform 1s; /* Add a transition for smooth scaling */
+    transition: transform 1s ease-in-out; /* Add a transition for smooth scaling */
   }
 
   .blob-animation.enjoy-zoom,
@@ -1520,7 +1521,7 @@ input,select{
   .blob-animation2 /*glowing blob*/ 
   {
     position: absolute;
-    top: 180px;
+    top: 200px;
     left: 710px;
     width: 30%;
     height: 30%;
@@ -1679,7 +1680,7 @@ nav .fa-2xl
   }
   nav ul
   {
-    background: #ff004f;
+    background: var(--default-color);
     position: fixed;
     top: 0;
     right: -200px;
