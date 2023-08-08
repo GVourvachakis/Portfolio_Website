@@ -133,7 +133,7 @@ Replace instances of #ff004f with var(--default-color).
   padding: 10px;
   cursor: pointer;
   font-size: 20px;
-  z-index: 999;
+  z-index: 2;
   transition: background-color 0.3s, transform 0.3s;
 }
 
@@ -344,7 +344,7 @@ section
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
   animation: animateBg 10s linear infinite;
-  z-index: 2;
+  z-index: 99;
 }
 
 @keyframes animateBg 
