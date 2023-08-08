@@ -344,6 +344,7 @@ section
   min-height: 100vh;
   background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
   animation: animateBg 10s linear infinite;
+  z-index: 2;
 }
 
 @keyframes animateBg 
